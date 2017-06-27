@@ -1,27 +1,10 @@
-### API with PHP
-
-Toda la documentacion de la **YouTube Data API (v3) para PHP** la encuentras [aqui](https://developers.google.com/youtube/v3/code_samples/php).
-
-Antes de poder utilizar la API es necesario descargar la [Biblioteca cliente de API de Google para PHP](https://github.com/google/google-api-php-client/tree/v1-master) desde los respositorios de GitHub de google.
-
-Clonamos o descargamos la librearia y unicamente vamos a hacer uso de la carpeta ***src/Google*** la cual contiene todas las librearias de las APIs de google.
-
-Para esta aplicacion vamos a usar el ejemplo **[Recuperar mis videos subidos](https://developers.google.com/youtube/v3/code_samples/php#retrieve_my_uploads)** que se encuentra en el sitio de la API.
-
-Las claves de autorizacion que se crearon anteriormente se deben indicar en las siguientes variables:
-```
-$OAUTH2_CLIENT_ID = 'REPLACE_ME';
-$OAUTH2_CLIENT_SECRET = 'REPLACE_ME';
-
-```
-
-[CODE: ]
-```
 <?php
 
 // Call set_include_path() as needed to point to your client library.
+require_once "Google/autoload.php";
 require_once 'Google/Client.php';
 require_once 'Google/Service/YouTube.php';
+
 session_start();
 
 /*
@@ -77,7 +60,7 @@ if ($client->getAccessToken()) {
 
       $playlistItemsResponse = $youtube->playlistItems->listPlaylistItems('snippet', array(
         'playlistId' => $uploadsListId,
-        'maxResults' => 50
+        'maxResults' => 5
       ));
 
       $htmlBody .= "<h3>Videos in list $uploadsListId</h3><ul>";
@@ -116,38 +99,8 @@ END;
   </head>
   <body>
     <?=$htmlBody?>
+    <?php 
+      var_dump($htmlBody);
+    ?>
   </body>
 </html>
-```
-
-Ejecutamos nuestra APP en nuestro navegador y lo primero que nos solicitara es **Autorizar la aplicacion**
-![capture-php-01](/img/capture-php-01.png)
-![capture-php-02](/img/capture-php-02.png)
-
-
-### ISSUES
-1.- Al ejecutar nuestra aplicacion en un servidor, ya sea local o publico nos encontraremos con este error.
-![capture-php-03](/img/capture-php-03.png)
-
-Dicho error se soluciona agregando el autoload.php mismo que se encuentra en los archivos descargados de la [Biblioteca cliente de API de Google para PHP](https://github.com/google/google-api-php-client/tree/v1-master).
-
-[REFERENCE](https://stackoverflow.com/questions/28351680/implementing-oauth2-login-fatal-error-class-google-service-not-found/34913637#34913637)
-
-```
-require_once "Google/autoload.php";
-
-```
-
-2.- El segundo error que se muestra es **Notice: Undefined variable: htmlBody in C:\xampp\htdocs\yt\index.php on line 96**
-![capture-php-04](/img/capture-php-04.png)
-
-Dicho error se soluciona inicializando la variable `$htmlBody` de la siguiente manera
-
-```
-$htmlBody = '';
-
-```
-
-
-### Sugerencia
-En el sitio [DOM SAMMUT](https://www.domsammut.com/code/php-server-side-youtube-v3-oauth-api-video-upload-guide) encontraras un tutorial mas detallado y un ejemplo de codigo recomendado, en el que indica todos los parametros que se pueden obtener apartir de la API.
