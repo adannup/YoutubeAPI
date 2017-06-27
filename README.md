@@ -40,10 +40,10 @@ En el apartado de ***Restricciones*** es **IMPORTANTE** que se indique la URL do
 
 Una vez creada las credenciales de autorizacion, se nos mostrara el ***ID de cliente*** y el ***secreto de cliente***, las cuales las usaremos posteriormente para añadirlos en el codigo de nuestra APP.
 
-![capture-08](/img/capture-078.png)
+![capture-08](/img/capture-08.png)
 
-### ISSUES
-#### Server Side
+## ISSUES
+### Server Side
 ![capture-09](/img/capture-09.png)
 
 Es muy comun encontrarse con este tipo de errores al querer ejecutar nuestra aplicacion, y este error es debido a que en el apartado de ***Restricciones*** no se añadio una URI de manera correcta, o no se tiene acceso a nuestra APP desde esa URI, por lo que se deben añadir todas las posibles URIs de acceso a nuestra APP, example:
@@ -56,7 +56,7 @@ Es muy comun encontrarse con este tipo de errores al querer ejecutar nuestra apl
 Aun así el propio mensaje de error indica la URI a la cual esta intentando realizar la peticion correspondiente, y esa URI tal cual, debera ser indicada en el apartado de **URIs de redireccionamiento autorizados:**.
 ![capture-10](/img/capture-10.png)
 
-#### Client Side
+### Client Side
 ![capture-11](/img/capture-11.png)
 
 De igual manera al configurar nuestra aplicacion desarrolldad en JavaScript, es muy comun encontrarse con ese error debido a que no se añadio de manera correcta la URL en el apartado **Origenes de JavaScript autorizados:**, es por ello que se debe añadir la URL de acceso a nuestra APP, example:
