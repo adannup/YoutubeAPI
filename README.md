@@ -9,14 +9,13 @@ Clonamos o descargamos la librearia y unicamente vamos a hacer uso de la carpeta
 Para esta aplicacion vamos a usar el ejemplo **[Recuperar mis videos subidos](https://developers.google.com/youtube/v3/code_samples/php#retrieve_my_uploads)** que se encuentra en el sitio de la API.
 
 Las claves de autorizacion que se crearon anteriormente se deben indicar en las siguientes variables:
-```
+```php
 $OAUTH2_CLIENT_ID = 'REPLACE_ME';
 $OAUTH2_CLIENT_SECRET = 'REPLACE_ME';
-
 ```
 
 [CODE: ]
-```
+```php
 <?php
 
 // Call set_include_path() as needed to point to your client library.
@@ -133,9 +132,8 @@ Dicho error se soluciona agregando el autoload.php mismo que se encuentra en los
 
 [REFERENCE](https://stackoverflow.com/questions/28351680/implementing-oauth2-login-fatal-error-class-google-service-not-found/34913637#34913637)
 
-```
+```php
 require_once "Google/autoload.php";
-
 ```
 
 2.- El segundo error que se muestra es **Notice: Undefined variable: htmlBody in C:\xampp\htdocs\yt\index.php on line 96**
@@ -143,9 +141,8 @@ require_once "Google/autoload.php";
 
 Dicho error se soluciona inicializando la variable `$htmlBody` de la siguiente manera
 
-```
+```php
 $htmlBody = '';
-
 ```
 
 
